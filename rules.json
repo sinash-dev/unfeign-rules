@@ -1,0 +1,120 @@
+{
+  "format": 1,
+  "version": 1,
+  "updated": "2026-11-05",
+  "rules": [
+    {
+      "id": "deviantart-artwork",
+      "site": "DeviantArt",
+      "hosts": ["deviantart.com"],
+      "item": "main[role=\"main\"]",
+      "label": [{ "selector": "span", "text": ["Created using AI tools"] }],
+      "media": "img[fetchpriority=\"high\"]",
+      "action": "blur-media",
+      "verified": true,
+      "note": "Artwork page label. Gallery thumbnails carry no visible label."
+    },
+    {
+      "id": "pixiv-artwork",
+      "site": "pixiv",
+      "hosts": ["pixiv.net"],
+      "item": "div:has(> figure):has(> figcaption)",
+      "label": [{ "selector": "a[href*=\"/articles/11866167926809\"]" }],
+      "media": "figure img",
+      "action": "blur-media",
+      "verified": true,
+      "note": "pixiv's own AI-generated marker links to its AI help article; user tags named 'AI' are ignored."
+    },
+    {
+      "id": "tiktok-feed-item",
+      "site": "TikTok",
+      "hosts": ["tiktok.com"],
+      "item": "article[data-e2e=\"recommend-list-item-container\"]",
+      "label": [{ "selector": "[data-e2e=\"aigc-tag\"]" }],
+      "media": "section[data-e2e=\"feed-video\"]",
+      "action": "blur-media",
+      "verified": true,
+      "note": "Chip text 'Creator labeled as AI-generated' or 'Contains AI-generated media'."
+    },
+    {
+      "id": "youtube-watch",
+      "site": "YouTube",
+      "hosts": ["youtube.com"],
+      "item": "body",
+      "label": [{ "selector": "how-this-was-made-section-view-model a[href*=\"answer/15447836\"]" }],
+      "media": "#movie_player",
+      "action": "blur-media",
+      "verified": true,
+      "note": "'How this was made: Made with AI'. YouTube renders it only after the description is expanded. 'Auto-dubbed' links to a different article and is not matched."
+    },
+    {
+      "id": "x-post",
+      "site": "X",
+      "hosts": ["x.com", "twitter.com"],
+      "item": "article[data-testid=\"tweet\"]",
+      "label": [
+        { "selector": "span", "text": ["Made with AI"] },
+        { "selector": "svg path[d^=\"M12.998 1.94c.18 3.015 1.04 5.156 2.473 6.59\"]" }
+      ],
+      "media": "[data-testid=\"tweetPhoto\"], [data-testid=\"videoComponent\"]",
+      "action": "blur-media",
+      "verified": false,
+      "note": "Signed-in layout only. Icon path from Stevo's AI Blocklist (MIT), 'Tweet with AI label'."
+    },
+    {
+      "id": "facebook-post",
+      "site": "Facebook",
+      "hosts": ["facebook.com"],
+      "item": "[role=\"article\"]",
+      "label": [{ "selector": "[role=\"button\"], span", "text": ["AI info", "AI content"] }],
+      "media": "img, video",
+      "action": "blur-media",
+      "verified": false,
+      "note": "Meta's 'AI info' label. Signed-in only."
+    },
+    {
+      "id": "instagram-post",
+      "site": "Instagram",
+      "hosts": ["instagram.com"],
+      "item": "article",
+      "label": [{ "selector": "a, span, div[role=\"button\"]", "text": ["AI info"] }],
+      "media": "img, video",
+      "action": "blur-media",
+      "verified": false,
+      "note": "Meta's 'AI info' label under the author name. Signed-in only."
+    },
+    {
+      "id": "pinterest-closeup",
+      "site": "Pinterest",
+      "hosts": ["pinterest.com"],
+      "item": "body",
+      "label": [{ "selector": "div, span", "text": ["AI modified"] }],
+      "media": "[data-test-id=\"pin-closeup-image\"] img, [data-test-id=\"closeup-image\"] img",
+      "action": "blur-media",
+      "verified": false,
+      "note": "Pinterest's Gen AI label, shown bottom-left of a pin's close-up."
+    },
+    {
+      "id": "linkedin-update",
+      "site": "LinkedIn",
+      "hosts": ["linkedin.com"],
+      "item": "[data-urn^=\"urn:li:activity\"], .feed-shared-update-v2",
+      "label": [{ "selector": "[aria-label]", "attribute": "aria-label", "contains": ["generated with ai", "ai-generated", "created with ai"] }],
+      "media": "img, video",
+      "action": "blur-media",
+      "verified": false,
+      "note": "LinkedIn's Content Credentials badge; matched only when its label mentions AI, because the badge also appears on non-AI photos."
+    },
+    {
+      "id": "reddit-post-flair",
+      "site": "Reddit",
+      "hosts": ["reddit.com"],
+      "item": "shreddit-post",
+      "label": [{ "selector": "shreddit-post-flair, [slot=\"post-flair\"], .flair-content", "text": ["AI Generated", "AI-Generated", "AI Art", "AI Artwork", "Made with AI", "AI generated content"] }],
+      "media": "img, video, shreddit-player, shreddit-player-2",
+      "action": "blur-media",
+      "verified": false,
+      "note": "Reddit has no platform AI label; this reads subreddit post flair, which moderators set."
+    }
+  ]
+}
