@@ -1,4 +1,4 @@
-# Unfeign site label rules
+﻿# Unfeign site label rules
 
 Data file used by the [Unfeign](https://github.com/sinash-dev/unfeign) browser extension to recognise the "AI-generated" labels that websites show (YouTube, TikTok, pixiv, DeviantArt and others).
 
@@ -11,10 +11,13 @@ Data file used by the [Unfeign](https://github.com/sinash-dev/unfeign) browser e
 ```text
 { format: 1, version: <integer, increases with every change>, updated: <date>,
   rules: [ { id, site, hosts[], item, label: [{ selector, text?[], contains?[], attribute? }],
-             media?, action: "blur-media" | "blur-item", verified, note? } ] }
+             media?, action: "blur-media" | "blur-item", verified, note? } ],
+  searchRules?: [ { id, site, hosts[], item, link: { selector, attribute, json?, param? }, verified, note? } ] }
 ```
 
-Limits enforced by the extension: at most 200 rules, selectors up to 400 characters, plain hostnames only (no wildcards), unique ids.
+`rules` find a site's own "AI" label. `searchRules` find the source page of each image search result (Google, Bing, DuckDuckGo), which the extension checks against its bundled list of AI-image sites (CC0, from the uBlockOrigin AI Blocklist).
+
+Limits enforced by the extension: at most 200 rules and 50 search rules, selectors up to 400 characters, plain hostnames only (no wildcards), unique ids.
 
 ## Changing a rule
 

@@ -1,14 +1,23 @@
 {
   "format": 1,
-  "version": 1,
-  "updated": "2026-11-05",
+  "version": 2,
+  "updated": "2026-11-07",
   "rules": [
     {
       "id": "deviantart-artwork",
       "site": "DeviantArt",
-      "hosts": ["deviantart.com"],
+      "hosts": [
+        "deviantart.com"
+      ],
       "item": "main[role=\"main\"]",
-      "label": [{ "selector": "span", "text": ["Created using AI tools"] }],
+      "label": [
+        {
+          "selector": "span",
+          "text": [
+            "Created using AI tools"
+          ]
+        }
+      ],
       "media": "img[fetchpriority=\"high\"]",
       "action": "blur-media",
       "verified": true,
@@ -17,9 +26,15 @@
     {
       "id": "pixiv-artwork",
       "site": "pixiv",
-      "hosts": ["pixiv.net"],
+      "hosts": [
+        "pixiv.net"
+      ],
       "item": "div:has(> figure):has(> figcaption)",
-      "label": [{ "selector": "a[href*=\"/articles/11866167926809\"]" }],
+      "label": [
+        {
+          "selector": "a[href*=\"/articles/11866167926809\"]"
+        }
+      ],
       "media": "figure img",
       "action": "blur-media",
       "verified": true,
@@ -28,9 +43,15 @@
     {
       "id": "tiktok-feed-item",
       "site": "TikTok",
-      "hosts": ["tiktok.com"],
+      "hosts": [
+        "tiktok.com"
+      ],
       "item": "article[data-e2e=\"recommend-list-item-container\"]",
-      "label": [{ "selector": "[data-e2e=\"aigc-tag\"]" }],
+      "label": [
+        {
+          "selector": "[data-e2e=\"aigc-tag\"]"
+        }
+      ],
       "media": "section[data-e2e=\"feed-video\"]",
       "action": "blur-media",
       "verified": true,
@@ -39,9 +60,15 @@
     {
       "id": "youtube-watch",
       "site": "YouTube",
-      "hosts": ["youtube.com"],
+      "hosts": [
+        "youtube.com"
+      ],
       "item": "body",
-      "label": [{ "selector": "how-this-was-made-section-view-model a[href*=\"answer/15447836\"]" }],
+      "label": [
+        {
+          "selector": "how-this-was-made-section-view-model a[href*=\"answer/15447836\"]"
+        }
+      ],
       "media": "#movie_player",
       "action": "blur-media",
       "verified": true,
@@ -50,11 +77,21 @@
     {
       "id": "x-post",
       "site": "X",
-      "hosts": ["x.com", "twitter.com"],
+      "hosts": [
+        "x.com",
+        "twitter.com"
+      ],
       "item": "article[data-testid=\"tweet\"]",
       "label": [
-        { "selector": "span", "text": ["Made with AI"] },
-        { "selector": "svg path[d^=\"M12.998 1.94c.18 3.015 1.04 5.156 2.473 6.59\"]" }
+        {
+          "selector": "span",
+          "text": [
+            "Made with AI"
+          ]
+        },
+        {
+          "selector": "svg path[d^=\"M12.998 1.94c.18 3.015 1.04 5.156 2.473 6.59\"]"
+        }
       ],
       "media": "[data-testid=\"tweetPhoto\"], [data-testid=\"videoComponent\"]",
       "action": "blur-media",
@@ -64,9 +101,19 @@
     {
       "id": "facebook-post",
       "site": "Facebook",
-      "hosts": ["facebook.com"],
+      "hosts": [
+        "facebook.com"
+      ],
       "item": "[role=\"article\"]",
-      "label": [{ "selector": "[role=\"button\"], span", "text": ["AI info", "AI content"] }],
+      "label": [
+        {
+          "selector": "[role=\"button\"], span",
+          "text": [
+            "AI info",
+            "AI content"
+          ]
+        }
+      ],
       "media": "img, video",
       "action": "blur-media",
       "verified": false,
@@ -75,9 +122,18 @@
     {
       "id": "instagram-post",
       "site": "Instagram",
-      "hosts": ["instagram.com"],
+      "hosts": [
+        "instagram.com"
+      ],
       "item": "article",
-      "label": [{ "selector": "a, span, div[role=\"button\"]", "text": ["AI info"] }],
+      "label": [
+        {
+          "selector": "a, span, div[role=\"button\"]",
+          "text": [
+            "AI info"
+          ]
+        }
+      ],
       "media": "img, video",
       "action": "blur-media",
       "verified": false,
@@ -86,9 +142,18 @@
     {
       "id": "pinterest-closeup",
       "site": "Pinterest",
-      "hosts": ["pinterest.com"],
+      "hosts": [
+        "pinterest.com"
+      ],
       "item": "body",
-      "label": [{ "selector": "div, span", "text": ["AI modified"] }],
+      "label": [
+        {
+          "selector": "div, span",
+          "text": [
+            "AI modified"
+          ]
+        }
+      ],
       "media": "[data-test-id=\"pin-closeup-image\"] img, [data-test-id=\"closeup-image\"] img",
       "action": "blur-media",
       "verified": false,
@@ -97,9 +162,21 @@
     {
       "id": "linkedin-update",
       "site": "LinkedIn",
-      "hosts": ["linkedin.com"],
+      "hosts": [
+        "linkedin.com"
+      ],
       "item": "[data-urn^=\"urn:li:activity\"], .feed-shared-update-v2",
-      "label": [{ "selector": "[aria-label]", "attribute": "aria-label", "contains": ["generated with ai", "ai-generated", "created with ai"] }],
+      "label": [
+        {
+          "selector": "[aria-label]",
+          "attribute": "aria-label",
+          "contains": [
+            "generated with ai",
+            "ai-generated",
+            "created with ai"
+          ]
+        }
+      ],
       "media": "img, video",
       "action": "blur-media",
       "verified": false,
@@ -108,13 +185,91 @@
     {
       "id": "reddit-post-flair",
       "site": "Reddit",
-      "hosts": ["reddit.com"],
+      "hosts": [
+        "reddit.com"
+      ],
       "item": "shreddit-post",
-      "label": [{ "selector": "shreddit-post-flair, [slot=\"post-flair\"], .flair-content", "text": ["AI Generated", "AI-Generated", "AI Art", "AI Artwork", "Made with AI", "AI generated content"] }],
+      "label": [
+        {
+          "selector": "shreddit-post-flair, [slot=\"post-flair\"], .flair-content",
+          "text": [
+            "AI Generated",
+            "AI-Generated",
+            "AI Art",
+            "AI Artwork",
+            "Made with AI",
+            "AI generated content"
+          ]
+        }
+      ],
       "media": "img, video, shreddit-player, shreddit-player-2",
       "action": "blur-media",
       "verified": false,
       "note": "Reddit has no platform AI label; this reads subreddit post flair, which moderators set."
+    }
+  ],
+  "searchRules": [
+    {
+      "id": "google-images",
+      "site": "Google Images",
+      "hosts": [
+        "google.com",
+        "google.co.uk",
+        "google.de",
+        "google.fr",
+        "google.es",
+        "google.it",
+        "google.nl",
+        "google.ca",
+        "google.com.au",
+        "google.co.in",
+        "google.co.jp",
+        "google.com.br",
+        "google.com.mx",
+        "google.pl",
+        "google.se",
+        "google.ch",
+        "google.at",
+        "google.be",
+        "google.ie",
+        "google.co.nz"
+      ],
+      "item": "[data-attrid=\"images universal\"][data-lpage]",
+      "link": {
+        "selector": "[data-lpage]",
+        "attribute": "data-lpage"
+      },
+      "verified": true,
+      "note": "Each image result carries its source page in data-lpage (udm=2 image search)."
+    },
+    {
+      "id": "bing-images",
+      "site": "Bing Images",
+      "hosts": [
+        "bing.com"
+      ],
+      "item": "ul.dgControl_list > li",
+      "link": {
+        "selector": "a.iusc",
+        "attribute": "m",
+        "json": "purl"
+      },
+      "verified": true,
+      "note": "The a.iusc 'm' attribute is JSON; purl is the source page."
+    },
+    {
+      "id": "duckduckgo-images",
+      "site": "DuckDuckGo Images",
+      "hosts": [
+        "duckduckgo.com"
+      ],
+      "item": "figure:has(figcaption a[href^=\"http\"])",
+      "link": {
+        "selector": "figcaption a[href^=\"http\"]",
+        "attribute": "href"
+      },
+      "verified": true,
+      "note": "Class names are hashed; the result figure's caption links to the source page."
     }
   ]
 }
